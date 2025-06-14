@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL") // lấy URL MongoDB từ file .env
+}
+
+model Users {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  username  String    @unique
+  email     String    @unique
+  password  String
+  avatar    String?
+  bio       String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relations
+  videos    Videos[]
+  comments  Comments[]
+  likes     Like[]
+  followers Follows[]  @relation("following")
+  following Follows[]  @relation("follower")
+}
+
+model Videos {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  url         String
+  thumbnail   String?
+  type        String?   // Category or type of video
+  views       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  userId    String    @db.ObjectId
+  user      Users      @relation(fields: [userId], references: [id])
+  comments  Comments[]
+  likes     Like[]
+}
+
+model Comments   {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId    String   @db.ObjectId
+  videoId   String   @db.ObjectId
+  user      Users     @relation(fields: [userId], references: [id])
+  video     Videos    @relation(fields: [videoId], references: [id])
+}
+
+model Like {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String   // "like" or "dislike"
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId    String   @db.ObjectId
+  videoId   String   @db.ObjectId
+  user      Users     @relation(fields: [userId], references: [id])
+  video     Videos    @relation(fields: [videoId], references: [id])
+
+  @@unique([userId, videoId]) // Prevent multiple likes from same user on same video
+}
+
+model Follows {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  followerId  String   @db.ObjectId
+  followingId String   @db.ObjectId
+  createdAt   DateTime @default(now())
+
+  // Relations
+  follower  Users     @relation("follower", fields: [followerId], references: [id])
+  following Users     @relation("following", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId]) // Prevent duplicate follows
+}

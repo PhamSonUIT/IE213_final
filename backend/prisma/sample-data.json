@@ -1,0 +1,106 @@
+{
+  "users": [
+    {
+      "username": "johndoe",
+      "email": "john@example.com",
+      "password": "hashedpassword123",
+      "avatar": "https://example.com/avatars/john.jpg",
+      "bio": "Full-stack developer passionate about web technologies"
+    },
+    {
+      "username": "janesmith",
+      "email": "jane@example.com",
+      "password": "hashedpassword456",
+      "avatar": "https://example.com/avatars/jane.jpg",
+      "bio": "UI/UX designer and frontend developer"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Introduction to Web Development",
+      "description": "Learn the basics of web development including HTML, CSS, and JavaScript",
+      "url": "https://example.com/videos/web-dev-intro.mp4",
+      "thumbnail": "https://example.com/thumbnails/web-dev.jpg",
+      "type": "Tutorial",
+      "views": 1000
+    },
+    {
+      "title": "Advanced React Patterns",
+      "description": "Deep dive into advanced React patterns and best practices",
+      "url": "https://example.com/videos/react-patterns.mp4",
+      "thumbnail": "https://example.com/thumbnails/react.jpg",
+      "type": "Tutorial",
+      "views": 500
+    },
+    {
+      "title": "Building REST APIs with Node.js",
+      "description": "Learn how to build scalable REST APIs using Node.js and Express",
+      "url": "https://example.com/videos/node-api.mp4",
+      "thumbnail": "https://example.com/thumbnails/node.jpg",
+      "type": "Tutorial",
+      "views": 750
+    },
+    {
+      "title": "Database Design Best Practices",
+      "description": "Essential tips and tricks for designing efficient databases",
+      "url": "https://example.com/videos/db-design.mp4",
+      "thumbnail": "https://example.com/thumbnails/database.jpg",
+      "type": "Educational",
+      "views": 1200
+    },
+    {
+      "title": "DevOps Fundamentals",
+      "description": "Introduction to DevOps practices and tools",
+      "url": "https://example.com/videos/devops.mp4",
+      "thumbnail": "https://example.com/thumbnails/devops.jpg",
+      "type": "Educational",
+      "views": 800
+    },
+    {
+      "title": "UI Design Principles",
+      "description": "Master the fundamentals of UI design and user experience",
+      "url": "https://example.com/videos/ui-design.mp4",
+      "thumbnail": "https://example.com/thumbnails/ui-design.jpg",
+      "type": "Design",
+      "views": 1500
+    },
+    {
+      "title": "Mobile App Development",
+      "description": "Build cross-platform mobile apps using React Native",
+      "url": "https://example.com/videos/mobile-dev.mp4",
+      "thumbnail": "https://example.com/thumbnails/mobile.jpg",
+      "type": "Tutorial",
+      "views": 950
+    }
+  ],
+  "comments": [
+    {
+      "content": "Great tutorial! Very helpful for beginners.",
+      "userId": "user1",
+      "videoId": "video1"
+    },
+    {
+      "content": "Could you explain more about the advanced patterns?",
+      "userId": "user2",
+      "videoId": "video2"
+    }
+  ],
+  "likes": [
+    {
+      "type": "like",
+      "userId": "user1",
+      "videoId": "video1"
+    },
+    {
+      "type": "like",
+      "userId": "user2",
+      "videoId": "video2"
+    }
+  ],
+  "follows": [
+    {
+      "followerId": "user1",
+      "followingId": "user2"
+    }
+  ]
+}
